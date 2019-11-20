@@ -23,16 +23,27 @@
 
     <!-- application styles -->
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="./manifest.json">
     
     <!-- application scripts -->
     <script src="js/job.js"></script>
     <!-- library for reading barcodes -->
     <script src="js/app.js" defer></script>
+	<script>
+	if ('serviceWorker' in navigator) {
+	  window.addEventListener('load', () => {
+		navigator.serviceWorker.register('/service-worker.js')
+		    .then((reg) => {
+		      console.log('Service worker registered.', reg);
+		    });
+	  });
+	}	
+</script>
 
 </head>
 
 <body>
+
     <!-- First page --> 
     <div id="bcStart">
         <img src="images/logo.png">
